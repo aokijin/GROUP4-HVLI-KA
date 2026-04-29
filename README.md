@@ -14,7 +14,7 @@
 ---
 
 ## 👥 Collaborators
-| Profile | Name 👤 | Role ðŸ› 🛠️ | SR-Code 🆔 |
+| Profile | Name 👤 | Role 🛠️ | SR-Code 🆔 |
 | :---: | :--- | :--- | :--- |
 | <img src="./assets/ashanti.jpg" width="100" height="80"> | **Abdon, Alessandra Ashanti M.** | Leader, Documenter, Programmer | 25-00731 |
 | <img src="./assets/tristan.jpg" width="100" height="80"> | **Bonto, Tristan James** | Member, Documenter, Programmer | 25-01894 |
