@@ -117,3 +117,92 @@ string toUpper(string s) {
     transform(s.begin(), s.end(), s.begin(), ::toupper);
     return s;
 }
+
+// ============================================================
+//  FEATURE 1: ADD VIOLATION
+// ============================================================
+
+void addViolation() {
+    printDivider('-');
+    cout << "  ADD VIOLATION RECORD\n";
+    printDivider('-');
+
+    ViolationRecord rec;
+    rec.id = recordIdCounter++;
+
+    // Step 1 – Major or Minor?
+    int typeChoice = 0;
+    cout << "\n  Select Violation Category:\n";
+    cout << "    [1] MAJOR Violation\n";
+    cout << "    [2] MINOR Violation\n";
+    cout << "  Choice: ";
+    cin >> typeChoice;
+    cin.ignore();
+
+    if (typeChoice == 1) {
+        rec.violationType = "MAJOR";
+        rec.priority      = PRIORITY_MAJOR;
+
+        cout << "\n  MAJOR Violations:\n";
+        for (int i = 0; i < (int)MAJOR_VIOLATIONS.size(); i++) {
+            cout << "    [" << (i + 1) << "] " << MAJOR_VIOLATIONS[i] << "\n";
+        }
+        int vChoice = 0;
+        cout << "  Select violation number: ";
+        cin >> vChoice;
+        cin.ignore();
+        if (vChoice < 1 || vChoice > (int)MAJOR_VIOLATIONS.size()) {
+            cout << "  [!] Invalid choice. Returning to menu.\n";
+            recordIdCounter--;
+            return;
+        }
+        rec.violation = MAJOR_VIOLATIONS[vChoice - 1];
+
+    } else if (typeChoice == 2) {
+        rec.violationType = "MINOR";
+        rec.priority      = PRIORITY_MINOR;
+
+        cout << "\n  MINOR Violations:\n";
+        for (int i = 0; i < (int)MINOR_VIOLATIONS.size(); i++) {
+            cout << "    [" << (i + 1) << "] " << MINOR_VIOLATIONS[i] << "\n";
+        }
+        int vChoice = 0;
+        cout << "  Select violation number: ";
+        cin >> vChoice;
+        cin.ignore();
+        if (vChoice < 1 || vChoice > (int)MINOR_VIOLATIONS.size()) {
+            cout << "  [!] Invalid choice. Returning to menu.\n";
+            recordIdCounter--;
+            return;
+        }
+        rec.violation = MINOR_VIOLATIONS[vChoice - 1];
+
+    } else {
+        cout << "  [!] Invalid category. Returning to menu.\n";
+        recordIdCounter--;
+        return;
+    }
+
+    // Step 2 – Rider details
+    cout << "\n  Enter Plate Number : ";
+    getline(cin, rec.plateNumber);
+    rec.plateNumber = toUpper(rec.plateNumber);
+
+    cout << "  Enter Rider Age    : ";
+    cin >> rec.age;
+    cin.ignore();
+
+    // Store in all data structures
+    allViolations.push_back(rec);
+    undoStack.push(rec);
+    violationPQ.push(rec);
+    violationHashTable[rec.plateNumber].push_back(rec);
+
+    // Also enqueue plate to motorcycle queue if not already present
+    // (simulate rider arriving at checkpoint)
+    motorcycleQueue.push(rec.plateNumber);
+
+    cout << "\n  [✓] Violation recorded successfully! (ID: " << rec.id << ")\n";
+    printDivider('-');
+    pressEnterToContinue();
+}
