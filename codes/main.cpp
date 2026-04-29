@@ -206,3 +206,35 @@ void addViolation() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 2: VIEW ALL VIOLATIONS (ordered list)
+// ============================================================
+
+void viewAllViolations() {
+    printDivider('-');
+    cout << "  ALL VIOLATION RECORDS\n";
+    printDivider('-');
+
+    if (allViolations.empty()) {
+        cout << "  No violations recorded yet.\n";
+    } else {
+        cout << left
+             << setw(6)  << "  ID"
+             << setw(13) << "Plate"
+             << setw(6)  << "Age"
+             << setw(8)  << "Type"
+             << "Violation\n";
+        printDivider('-');
+        for (const auto& rec : allViolations) {
+            cout << "  "
+                 << left << setw(6)  << rec.id
+                 << left << setw(13) << rec.plateNumber
+                 << left << setw(6)  << rec.age
+                 << left << setw(8)  << rec.violationType
+                 << rec.violation << "\n";
+        }
+    }
+    printDivider('-');
+    pressEnterToContinue();
+}
