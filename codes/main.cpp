@@ -238,3 +238,18 @@ void viewAllViolations() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 3: SEARCH BY PLATE NUMBER  (Hash Table)
+// ============================================================
+
+void searchByPlate() {
+    printDivider('-');
+    cout << "  SEARCH VIOLATION BY PLATE NUMBER\n";
+    printDivider('-');
+
+    string plate;
+    cout << "  Enter Plate Number to search: ";
+    cin.ignore();
+    getline(cin, plate);
+    plate = toUpper(plate);
