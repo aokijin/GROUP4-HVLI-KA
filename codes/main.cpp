@@ -253,3 +253,27 @@ void searchByPlate() {
     cin.ignore();
     getline(cin, plate);
     plate = toUpper(plate);
+
+     auto it = violationHashTable.find(plate);
+    if (it == violationHashTable.end() || it->second.empty()) {
+        cout << "  [!] No records found for plate: " << plate << "\n";
+    } else {
+        cout << "\n  Records found for plate [" << plate << "]:\n";
+        printDivider('-');
+        cout << left
+             << setw(7)  << "ID"
+             << setw(8)  << "Type"
+             << setw(6)  << "Age"
+             << "Violation\n";
+        printDivider('-');
+        for (const auto& rec : it->second) {
+            cout << "  "
+                 << left << setw(7) << rec.id
+                 << left << setw(8) << rec.violationType
+                 << left << setw(6) << rec.age
+                 << rec.violation << "\n";
+        }
+    }
+    printDivider('-');
+    pressEnterToContinue();
+}
