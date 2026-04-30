@@ -277,3 +277,29 @@ void searchByPlate() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 4: PROCESS NEXT HIGH-PRIORITY VIOLATION (Priority Queue)
+// ============================================================
+
+void processNextViolation() {
+    printDivider('-');
+    cout << "  PROCESS NEXT HIGH-PRIORITY VIOLATION\n";
+    printDivider('-');
+
+    if (violationPQ.empty()) {
+        cout << "  [!] No violations in the priority queue.\n";
+    } else {
+        ViolationRecord top = violationPQ.top();
+        violationPQ.pop();
+        cout << "\n  Processing next violation (highest priority):\n\n";
+        cout << "    Record ID  : " << top.id           << "\n";
+        cout << "    Plate No.  : " << top.plateNumber  << "\n";
+        cout << "    Age        : " << top.age           << "\n";
+        cout << "    Type       : " << top.violationType << "\n";
+        cout << "    Violation  : " << top.violation     << "\n";
+        cout << "\n  [✓] Violation processed and removed from priority queue.\n";
+    }
+    printDivider('-');
+    pressEnterToContinue();
+}
