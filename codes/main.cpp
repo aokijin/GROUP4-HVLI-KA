@@ -468,3 +468,24 @@ void viewViolationTypes() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  MAIN MENU
+// ============================================================
+
+void showMainMenu() {
+    printDivider();
+    cout << "      HVLI-KA  —  Main Menu\n";
+    printDivider();
+    cout << "  [1] Add Violation Record\n";
+    cout << "  [2] View All Violation Records\n";
+    cout << "  [3] Search Record by Plate Number\n";
+    cout << "  [4] Process Next High-Priority Violation\n";
+    cout << "  [5] Manage Checkpoint Motorcycle Queue\n";
+    cout << "  [6] Undo Last Violation Entry\n";
+    cout << "  [7] Generate Violation Report\n";
+    cout << "  [8] View Violation Type Lists\n";
+    cout << "  [0] Exit\n";
+    printDivider();
+    cout << "  Enter choice: ";
+}
