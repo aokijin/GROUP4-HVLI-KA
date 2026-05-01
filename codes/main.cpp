@@ -489,3 +489,18 @@ void showMainMenu() {
     printDivider();
     cout << "  Enter choice: ";
 }
+
+// ============================================================
+//  MAIN
+// ============================================================
+
+int main() {
+    printHeader();
+    cout << "\n  Welcome, Officer! System ready.\n";
+    pressEnterToContinue();
+
+    int choice = -1;
+    while (choice != 0) {
+        showMainMenu();
+        cin >> choice;
+        cin.ignore();
