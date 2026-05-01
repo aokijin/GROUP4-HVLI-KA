@@ -356,3 +356,47 @@ void manageCheckpointQueue() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 6: UNDO LAST ENTRY  (Stack / LIFO)
+// ============================================================
+
+void undoLastEntry() {
+    printDivider('-');
+    cout << "  UNDO LAST VIOLATION ENTRY\n";
+    printDivider('-');
+
+    if (undoStack.empty()) {
+        cout << "  [!] No entries to undo.\n";
+    } else {
+        ViolationRecord last = undoStack.top();
+        undoStack.pop();
+
+        // Remove from allViolations
+        for (auto it = allViolations.begin(); it != allViolations.end(); ++it) {
+            if (it->id == last.id) {
+                allViolations.erase(it);
+                break;
+            }
+        }
+
+        // Remove from hash table
+        auto& vec = violationHashTable[last.plateNumber];
+        for (auto it = vec.begin(); it != vec.end(); ++it) {
+            if (it->id == last.id) {
+                vec.erase(it);
+                break;
+            }
+        }
+
+        cout << "\n  [✓] Undone last entry:\n";
+        cout << "    ID        : " << last.id           << "\n";
+        cout << "    Plate     : " << last.plateNumber  << "\n";
+        cout << "    Type      : " << last.violationType << "\n";
+        cout << "    Violation : " << last.violation     << "\n";
+        cout << "\n  Note: Entry also removed from hash table and violation list.\n";
+        cout << "        Priority queue will no longer process this entry.\n";
+    }
+    printDivider('-');
+    pressEnterToContinue();
+}
