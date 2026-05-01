@@ -400,3 +400,48 @@ void undoLastEntry() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 7: GENERATE REPORT
+// ============================================================
+
+void generateReport() {
+    printDivider('-');
+    cout << "  VIOLATION REPORT\n";
+    printDivider('-');
+
+    int majorCount = 0, minorCount = 0;
+    for (const auto& rec : allViolations) {
+        if (rec.violationType == "MAJOR") majorCount++;
+        else                             minorCount++;
+    }
+
+    cout << "\n  Total Violations Recorded : " << allViolations.size() << "\n";
+    cout << "  Major Violations          : " << majorCount            << "\n";
+    cout << "  Minor Violations          : " << minorCount            << "\n";
+    cout << "  Pending in Priority Queue : " << violationPQ.size()    << "\n";
+    cout << "  In Checkpoint Queue       : " << motorcycleQueue.size()<< "\n";
+    cout << "  Plates on Record (HT)     : " << violationHashTable.size() << "\n";
+
+    if (!allViolations.empty()) {
+        cout << "\n  --- Violation Breakdown ---\n";
+
+        // Count each specific violation
+        unordered_map<string, int> freq;
+        for (const auto& rec : allViolations) freq[rec.violation]++;
+
+        // Sort by frequency descending
+        vector<pair<string, int>> sorted(freq.begin(), freq.end());
+        sort(sorted.begin(), sorted.end(),
+             [](const pair<string,int>& a, const pair<string,int>& b) {
+                 return a.second > b.second;
+             });
+
+        for (const auto& p : sorted) {
+            cout << "    " << left << setw(40) << p.first << " : " << p.second << "\n";
+        }
+    }
+
+    printDivider('-');
+    pressEnterToContinue();
+}
