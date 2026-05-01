@@ -303,3 +303,20 @@ void processNextViolation() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 5: MOTORCYCLE CHECKPOINT QUEUE  (Queue / FIFO)
+// ============================================================
+
+void manageCheckpointQueue() {
+    printDivider('-');
+    cout << "  MOTORCYCLE CHECKPOINT QUEUE\n";
+    printDivider('-');
+
+    int choice = 0;
+    cout << "\n  [1] View current queue\n";
+    cout << "  [2] Admit next motorcycle for inspection\n";
+    cout << "  [3] Manually add plate to queue\n";
+    cout << "  Choice: ";
+    cin >> choice;
+    cin.ignore();
