@@ -333,4 +333,26 @@ void manageCheckpointQueue() {
                 temp.pop();
             }
         }
+    } else if (choice == 2) {
+        if (motorcycleQueue.empty()) {
+            cout << "\n  [!] Queue is empty. No motorcycle to admit.\n";
+        } else {
+            string plate = motorcycleQueue.front();
+            motorcycleQueue.pop();
+            cout << "\n  [✓] Admitting motorcycle with plate: " << plate << "\n";
+        }
+
+    } else if (choice == 3) {
+        string plate;
+        cout << "\n  Enter plate number to enqueue: ";
+        getline(cin, plate);
+        motorcycleQueue.push(toUpper(plate));
+        cout << "  [✓] Plate " << toUpper(plate) << " added to queue.\n";
+
+    } else {
+        cout << "\n  [!] Invalid choice.\n";
     }
+
+    printDivider('-');
+    pressEnterToContinue();
+}
