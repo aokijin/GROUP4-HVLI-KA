@@ -320,3 +320,17 @@ void manageCheckpointQueue() {
     cout << "  Choice: ";
     cin >> choice;
     cin.ignore();
+
+       if (choice == 1) {
+        if (motorcycleQueue.empty()) {
+            cout << "\n  [!] Checkpoint queue is empty.\n";
+        } else {
+            queue<string> temp = motorcycleQueue;
+            int pos = 1;
+            cout << "\n  Queue (front → back):\n";
+            while (!temp.empty()) {
+                cout << "    " << pos++ << ". " << temp.front() << "\n";
+                temp.pop();
+            }
+        }
+    }
