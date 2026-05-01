@@ -445,3 +445,26 @@ void generateReport() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 8: VIEW VIOLATION TYPE LISTS  (Array / List)
+// ============================================================
+
+void viewViolationTypes() {
+    printDivider('-');
+    cout << "  VIOLATION TYPE REFERENCE LIST\n";
+    printDivider('-');
+
+    cout << "\n  MAJOR VIOLATIONS (Priority Level 1):\n";
+    for (int i = 0; i < (int)MAJOR_VIOLATIONS.size(); i++) {
+        cout << "    " << (i + 1) << ". " << MAJOR_VIOLATIONS[i] << "\n";
+    }
+
+    cout << "\n  MINOR VIOLATIONS (Priority Level 2):\n";
+    for (int i = 0; i < (int)MINOR_VIOLATIONS.size(); i++) {
+        cout << "    " << (i + 1) << ". " << MINOR_VIOLATIONS[i] << "\n";
+    }
+
+    printDivider('-');
+    pressEnterToContinue();
+}
