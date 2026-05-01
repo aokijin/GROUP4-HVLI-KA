@@ -504,3 +504,27 @@ int main() {
         showMainMenu();
         cin >> choice;
         cin.ignore();
+
+          switch (choice) {
+            case 1: addViolation();          break;
+            case 2: viewAllViolations();     break;
+            case 3: searchByPlate();         break;
+            case 4: processNextViolation();  break;
+            case 5: manageCheckpointQueue(); break;
+            case 6: undoLastEntry();         break;
+            case 7: generateReport();        break;
+            case 8: viewViolationTypes();    break;
+            case 0:
+                printDivider();
+                cout << "  Thank you for using HVLI-KA. Stay safe on the road!\n";
+                printDivider();
+                break;
+            default:
+                cout << "\n  [!] Invalid choice. Please try again.\n";
+                pressEnterToContinue();
+                break;
+        }
+    }
+
+    return 0;
+}
