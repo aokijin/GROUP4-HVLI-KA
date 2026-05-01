@@ -303,3 +303,57 @@ void processNextViolation() {
     printDivider('-');
     pressEnterToContinue();
 }
+
+// ============================================================
+//  FEATURE 5: MOTORCYCLE CHECKPOINT QUEUE  (Queue / FIFO)
+// ============================================================
+
+void manageCheckpointQueue() {
+    printDivider('-');
+    cout << "  MOTORCYCLE CHECKPOINT QUEUE\n";
+    printDivider('-');
+
+    int choice = 0;
+    cout << "\n  [1] View current queue\n";
+    cout << "  [2] Admit next motorcycle for inspection\n";
+    cout << "  [3] Manually add plate to queue\n";
+    cout << "  Choice: ";
+    cin >> choice;
+    cin.ignore();
+
+    if (choice == 1) {
+        if (motorcycleQueue.empty()) {
+            cout << "\n  [!] Checkpoint queue is empty.\n";
+        } else {
+            queue<string> temp = motorcycleQueue;
+            int pos = 1;
+            cout << "\n  Queue (front → back):\n";
+            while (!temp.empty()) {
+                cout << "    " << pos++ << ". " << temp.front() << "\n";
+                temp.pop();
+            }
+        }
+
+    } else if (choice == 2) {
+        if (motorcycleQueue.empty()) {
+            cout << "\n  [!] Queue is empty. No motorcycle to admit.\n";
+        } else {
+            string plate = motorcycleQueue.front();
+            motorcycleQueue.pop();
+            cout << "\n  [✓] Admitting motorcycle with plate: " << plate << "\n";
+        }
+
+    } else if (choice == 3) {
+        string plate;
+        cout << "\n  Enter plate number to enqueue: ";
+        getline(cin, plate);
+        motorcycleQueue.push(toUpper(plate));
+        cout << "  [✓] Plate " << toUpper(plate) << " added to queue.\n";
+
+    } else {
+        cout << "\n  [!] Invalid choice.\n";
+    }
+
+    printDivider('-');
+    pressEnterToContinue();
+}
