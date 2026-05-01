@@ -304,8 +304,6 @@ void processNextViolation() {
     pressEnterToContinue();
 }
 
-<<<<<<< HEAD
-=======
 // ============================================================
 //  FEATURE 5: MOTORCYCLE CHECKPOINT QUEUE  (Queue / FIFO)
 // ============================================================
@@ -358,4 +356,3 @@ void manageCheckpointQueue() {
     printDivider('-');
     pressEnterToContinue();
 }
->>>>>>> 419246205c56cfd4035808ba761d645a0785d428
