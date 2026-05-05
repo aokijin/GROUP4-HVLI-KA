@@ -103,7 +103,7 @@ void printHeader() {
     printDivider();
     cout << "      HVLI-KA: High-Priority Violation Logging and\n";
     cout << "               Intelligent Knowledge of Infractions\n";
-    cout << "      Batangas State University | CC 103 | Team 4\n";
+    cout << "      Batangas State University | CC 103 | Team 4 - En-Coders \n";
     printDivider();
 }
 
@@ -221,10 +221,10 @@ void viewAllViolations() {
     } else {
         cout << left
              << setw(6)  << "  ID"
-             << setw(13) << "Plate"
-             << setw(6)  << "Age"
-             << setw(8)  << "Type"
-             << "Violation\n";
+             << setw(13) << "  Plate"
+             << setw(6)  << "  Age"
+             << setw(8)  << "  Type"
+             << "  Violation\n";
         printDivider('-');
         for (const auto& rec : allViolations) {
             cout << "  "
@@ -250,7 +250,6 @@ void searchByPlate() {
 
     string plate;
     cout << "  Enter Plate Number to search: ";
-    cin.ignore();
     getline(cin, plate);
     plate = toUpper(plate);
 
@@ -261,10 +260,10 @@ void searchByPlate() {
         cout << "\n  Records found for plate [" << plate << "]:\n";
         printDivider('-');
         cout << left
-             << setw(7)  << "ID"
-             << setw(8)  << "Type"
-             << setw(6)  << "Age"
-             << "Violation\n";
+             << setw(7)  << "  ID"
+             << setw(8)  << "  Type"
+             << setw(6)  << "  Age"
+             << "  Violation\n";
         printDivider('-');
         for (const auto& rec : it->second) {
             cout << "  "
@@ -298,7 +297,7 @@ void processNextViolation() {
         cout << "    Age        : " << top.age           << "\n";
         cout << "    Type       : " << top.violationType << "\n";
         cout << "    Violation  : " << top.violation     << "\n";
-        cout << "\n  [✓] Violation processed and removed from priority queue.\n";
+        cout << "\n  Violation processed and removed from priority queue.\n";
     }
     printDivider('-');
     pressEnterToContinue();
