@@ -475,7 +475,7 @@ void viewViolationTypes() {
 
 void showMainMenu() {
     printDivider();
-    cout << "      HVLI-KA  —  Main Menu\n";
+    cout << "      HVLI-KA  -  Main Menu\n";
     printDivider();
     cout << "  [1] Add Violation Record\n";
     cout << "  [2] View All Violation Records\n";
